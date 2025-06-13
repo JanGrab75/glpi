@@ -1,6 +1,43 @@
 # glpi
 GLPI
 
+Działający plik glpi.conf
+
+Przekierowanie z HTTP na HTTPS
+```bash
+<VirtualHost *:80>
+    ServerName 10.10.50.69
+    Redirect permanent / https://10.10.50.69/glpi
+</VirtualHost>
+```bash
+Obsługa HTTPS
+```bash
+<VirtualHost *:443>
+    ServerName 10.10.50.69
+    DocumentRoot /var/www/html/glpi
+
+    SSLEngine on
+    SSLCertificateFile /etc/ssl/certs/glpi.crt
+    SSLCertificateKeyFile /etc/ssl/private/glpi.key
+
+    <Directory /var/www/html/glpi/>
+        Options FollowSymLinks
+        AllowOverride All
+        Require all granted
+
+        RewriteEngine On
+        RewriteCond %{HTTP:Authorization} ^(.+)$
+        RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteRule ^(.*)$ index.php [QSA,L]
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/glpi_error.log
+    CustomLog ${APACHE_LOG_DIR}/glpi_access.log combined
+</VirtualHost>
+```
+
+
 ```bash
 cd /var/www/html/glpi
 ```
