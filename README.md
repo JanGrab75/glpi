@@ -10,16 +10,13 @@ php bin/console doctrine:migrations:migrate
 ```bash
 cd /var/www/html/glpi
 ```
-shell
-```shell
+```bash
 sudo php bin/console doctrine:migrations:migrate
 ```
-console
-```console
+```bash
 sudo nano /etc/apache2/sites-available/glpi.conf
 ```
-sh
-```sh
+```bash
   sudo nano /etc/apache2/sites-available/glpi.conf
 ```
 
@@ -45,4 +42,6 @@ sh
     </Directory>
 </VirtualHost>
 
+```bash
 sudo systemctl reload apache2
+```
