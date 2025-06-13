@@ -7,21 +7,18 @@ cd /var/www/html/glpi
 ```bash
 php bin/console doctrine:migrations:migrate
 ```
-
-`shell`, `console`, `sh`
-
 ```bash
 cd /var/www/html/glpi
 ```
-
+shell
 ```shell
 sudo php bin/console doctrine:migrations:migrate
 ```
-
+console
 ```console
 sudo nano /etc/apache2/sites-available/glpi.conf
 ```
-
+sh
 ```sh
   sudo nano /etc/apache2/sites-available/glpi.conf
 ```
