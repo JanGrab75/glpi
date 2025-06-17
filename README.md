@@ -82,3 +82,47 @@ sudo nano /etc/apache2/sites-available/glpi.conf
 ```bash
 sudo systemctl reload apache2
 ```
+
+"Timezone usage has not been activated. Run the 'php bin/console database:enable_timezones' command to activate it":
+
+```bash
+sudo mysql_tzinfo_to_sql /usr/share/zoneinfo
+```
+```bash
+cd /var/www/html/glpi/
+```
+```bash
+sudo php bin/console glpi:database:enable_timezones
+```
+```bash
+mysql -u root -p
+```
+```bash
+GRANT SELECT ON mysql.time_zone_name TO 'glpi'@'localhost';
+FLUSH PRIVILEGES;
+```
+```bash
+sudo systemctl restart mysql
+```
+Montowanie udział nfs z Qnap
+1. Utworzenie katalogu montowania.
+```bash
+sudo mkdir -p /mnt/qnap_glpi_backup
+```
+2. Montowanie.
+```bash
+sudo mount -t nfs -o vers=3 10.10.50.243:/glpi_backup /mnt/qnap_glpi_backup
+```
+3. Dodanie montowania do fstab
+
+
+Backup
+1. Bazy
+```bash
+sudo mysqldump -u root -p glpidb | gzip > /mnt/gnap_glpi_backup/glpidb_$(date +"%Y_%m_%d_%H_%M").sql.gz
+```
+2. Plików
+```bash
+sudo tar -czvf /mnt/gnap_glpi_backup/glpi_files_$(date +"%Y_%m_%d_%H_%M").tar.gz /var/www/html/glpi
+```
+
