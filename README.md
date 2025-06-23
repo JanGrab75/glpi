@@ -114,6 +114,12 @@ sudo mkdir -p /mnt/qnap_glpi_backup
 sudo mount -t nfs -o vers=3 10.10.50.243:/glpi_backup /mnt/qnap_glpi_backup
 ```
 3. Dodanie montowania do fstab
+```bash
+nano /etc/fstab
+```
+```bash
+10.10.50.243:/glpi_backup  /mnt/qnap_glpi_backup  nfs  defaults,nofail,noatime,intr,_netdev  0 0
+```
 
 
 Backup
@@ -125,4 +131,23 @@ sudo mysqldump -u root -p glpidb | gzip > /mnt/gnap_glpi_backup/glpidb_$(date +"
 ```bash
 sudo tar -czvf /mnt/gnap_glpi_backup/glpi_files_$(date +"%Y_%m_%d_%H_%M").tar.gz /var/www/html/glpi
 ```
+glpi-backup.sh
+```bash
+#!/bin/bash
 
+# Backup plików GLPI
+tar -czvf /mnt/qnap_glpi_backup/glpi_backup/glpi_files_$(date +"%Y_%m_%d_%H_%M").tar.gz /var/www/html/glpi
+
+# Backup bazy danych
+mysqldump -u root glpidb | gzip > /mnt/qnap_glpi_backup/glpi_backup/glpi_db_$(date +"%Y_%m_%d_%H_%M").sql.gz
+
+# Usuwanie backupów starszych niż 7 dni
+find /mnt/qnap_glpi_backup/ -type f -mtime +7 -delete
+```
+Dodanie skryptu glpi-backup.sh do cron-a.
+```bash
+sudo crontab -e
+```
+```bash
+53 23 * * * sudo /mnt/qnap_glpi_backup/glpi-backup.sh
+```
