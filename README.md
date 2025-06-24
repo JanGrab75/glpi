@@ -151,3 +151,15 @@ sudo crontab -e
 ```bash
 53 23 * * * sudo /mnt/qnap_glpi_backup/glpi-backup.sh
 ```
+
+Aby wyłączyć w menu GLPI pozycję „Rezerwacje”, należy odebrać użytkownikom uprawnienia do tej sekcji. GLPI nie pozwala na bezpośrednie usuwanie lub ukrywanie pozycji menu bezpośrednio z poziomu konfiguracji, ale ukrycie ich jest możliwe poprzez zarządzanie uprawnieniami użytkowników lub grup.
+
+Jak to zrobić:
+
+Wejdź w konfigurację profili użytkowników (Administration → Profiles).
+
+Wybierz profil (Self-Service), dla którego chcesz ukryć „Reservation”.
+
+W sekcji uprawnień odznacz dostęp do modułu „Reservation”.
+
+Po zapisaniu zmian użytkownicy z tym profilem nie będą widzieć tej pozycji w menu.
