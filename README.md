@@ -152,7 +152,7 @@ sudo crontab -e
 53 23 * * * sudo /mnt/qnap_glpi_backup/glpi-backup.sh
 ```
 
-Aby wyłączyć w menu GLPI pozycję „Rezerwacje”, należy odebrać użytkownikom uprawnienia do tej sekcji. GLPI nie pozwala na bezpośrednie usuwanie lub ukrywanie pozycji menu bezpośrednio z poziomu konfiguracji, ale ukrycie ich jest możliwe poprzez zarządzanie uprawnieniami użytkowników lub grup.
+* Aby wyłączyć w menu GLPI pozycję „Rezerwacje”, należy odebrać użytkownikom uprawnienia do tej sekcji. GLPI nie pozwala na bezpośrednie usuwanie lub ukrywanie pozycji menu bezpośrednio z poziomu konfiguracji, ale ukrycie ich jest możliwe poprzez zarządzanie uprawnieniami użytkowników lub grup.
 
 Jak to zrobić:
 
@@ -163,3 +163,18 @@ Wybierz profil (Self-Service), dla którego chcesz ukryć „Reservation”.
 W sekcji uprawnień odznacz dostęp do modułu „Reservation”.
 
 Po zapisaniu zmian użytkownicy z tym profilem nie będą widzieć tej pozycji w menu.
+
+* Aby w GLPI umożliwić rezerwację sprzętu, takiego jak rzutnik, należy wykonać następujące kroki:
+
+Otwórz kartę sprzętu
+Przejdź do zasobu, który chcesz udostępnić do rezerwacji (np. rzutnika) w module zarządzania zasobami.
+
+Włącz możliwość rezerwacji
+Na karcie danego sprzętu znajdź zakładkę „Reservation” i kliknij „Allow reservations” – dopiero wtedy sprzęt pojawi się na liście możliwych do rezerwacji.
+
+Zarządzaj uprawnieniami użytkowników
+
+Uprawnienia do rezerwacji są przypisywane na poziomie profilu użytkownika. Aby użytkownicy mogli rezerwować sprzęt, ich profil musi mieć odpowiednie uprawnienia do modułu rezerwacji. Ustawisz to w sekcji „Administracja > Profile”, wybierając odpowiedni profil i zaznaczając dostęp do rezerwacji.
+
+Rezerwacja sprzętu
+Po wykonaniu powyższych kroków użytkownicy mogą zarezerwować sprzęt przez „Rezerwacje”, wybierając dostępny termin i sprzęt z listy
