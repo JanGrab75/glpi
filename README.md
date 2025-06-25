@@ -1,6 +1,9 @@
 # glpi
 GLPI
 
+```bash
+sudo nano /etc/apache2/sites-available/glpi.conf
+```
 Działający plik glpi.conf
 
 Przekierowanie z HTTP na HTTPS
