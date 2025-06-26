@@ -3,6 +3,13 @@ GLPI
 
 1. Jak w glpi zwiększyć ilość pamięci dla Zend OPcache
 
+[opcache]
+opcache.enable=1
+opcache.memory_consumption=256
+opcache.interned_strings_buffer=8
+opcache.max_accelerated_files=10000
+opcache.max_wasted_percentage=5
+
 ```bash
 php -i | grep opcache.memory_consumption
 ```
