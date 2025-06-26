@@ -1,10 +1,26 @@
 # glpi
 GLPI
 
+1. Jak w glpi zwiększyć ilość pamięci dla Zend OPcache
+
+```bash
+php -i | grep opcache.memory_consumption
+```
+```bash
+sudo nano /etc/php/8.3/apache2/php.ini
+```
+;opcache.memory_consumption=128
+opcache.memory_consumption=256
+memory_limit = 512M?
+
+```bash
+sudo systemctl restart apache2
+```
+sudo systemctl restart php-fpm?
 ```bash
 sudo nano /etc/apache2/sites-available/glpi.conf
 ```
-Działający plik glpi.conf
+2. Działający plik glpi.conf
 
 Przekierowanie z HTTP na HTTPS
 ```bash
@@ -178,6 +194,7 @@ Na karcie danego sprzętu znajdź zakładkę „Reservation” i kliknij „Allo
 Zarządzaj uprawnieniami użytkowników
 
 Uprawnienia do rezerwacji są przypisywane na poziomie profilu użytkownika. Aby użytkownicy mogli rezerwować sprzęt, ich profil musi mieć odpowiednie uprawnienia do modułu rezerwacji. Ustawisz to w sekcji „Administracja > Profile”, wybierając odpowiedni profil i zaznaczając dostęp do rezerwacji.
+
 
 Rezerwacja sprzętu
 Po wykonaniu powyższych kroków użytkownicy mogą zarezerwować sprzęt przez „Rezerwacje”, wybierając dostępny termin i sprzęt z listy
