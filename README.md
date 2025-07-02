@@ -190,6 +190,8 @@ Wybierz profil (Self-Service), dla którego chcesz ukryć „Reservation”.
 
 W sekcji uprawnień odznacz dostęp do modułu „Reservation”.
 
+
+
 Po zapisaniu zmian użytkownicy z tym profilem nie będą widzieć tej pozycji w menu.
 
 * Aby w GLPI umożliwić rezerwację sprzętu, takiego jak rzutnik, należy wykonać następujące kroki:
@@ -207,3 +209,24 @@ Uprawnienia do rezerwacji są przypisywane na poziomie profilu użytkownika. Aby
 
 Rezerwacja sprzętu
 Po wykonaniu powyższych kroków użytkownicy mogą zarezerwować sprzęt przez „Rezerwacje”, wybierając dostępny termin i sprzęt z listy
+
+#
+Aby wymusić, by pole "Tytuł" podczas wpisywania zgłoszenia w GLPI było obligatoryjne, należy skorzystać z mechanizmu szablonów zgłoszeń i oznaczyć to pole jako wymagane. Oto jak to zrobić krok po kroku:
+
+Przejdź do menu:
+Assistance > Ticket > Zarządzaj szablonami (Manage templates).
+
+Wybierz szablon, którego używasz do tworzenia zgłoszeń.
+
+W sekcji dotyczącej pól szablonu znajdź pole Tytuł (Title).
+
+Zaznacz je jako Mandatory (obligatoryjne) – najczęściej odbywa się to poprzez odpowiedni dropdown lub checkbox przy tym polu.
+
+Zapisz zmiany w szablonie.
+
+Upewnij się, że wybrany szablon jest przypisany do odpowiedniej kategorii, encji lub profilu użytkownika, aby był aktywny podczas tworzenia zgłoszenia.
+
+Od tej pory użytkownik nie będzie mógł utworzyć zgłoszenia bez wypełnienia pola "Tytuł" – system wyświetli komunikat o konieczności uzupełnienia wszystkich pól oznaczonych jako obowiązkowe.
+
+Uwaga:
+Jeśli nie zdefiniujesz tytułu, a szablon nie wymusza jego podania, GLPI domyślnie ustawi jako tytuł pierwsze 70 znaków opisu zgłoszenia. Dlatego, aby pole "Tytuł" było zawsze wypełnione przez użytkownika, konieczne jest oznaczenie go jako obowiązkowego w szablonie.
